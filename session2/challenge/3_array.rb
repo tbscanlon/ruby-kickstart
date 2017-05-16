@@ -7,9 +7,10 @@
 
 class String
   def every_other_char
-    # string.size.times do |x|
-    return_s = ""
-    next if index.even?
-    return_s.push
+    a = self.split("")
+    return_a = []
+
+    a.each_index {|x| return_a.push(a[x]) if x.even?}
+    return_a.join("")
   end
 end
