@@ -24,7 +24,11 @@
 # USER:     BYE
 
 def deaf_grandma
-
+  while true
+    user_input = gets.chomp
+    break if user_input == "BYE"
+    puts user_input == user_input.upcase && user_input.length > 0 ? "NO, NOT SINCE 1938!" : "HUH?! SPEAK UP, SONNY!"
+  end
 end
 
 
