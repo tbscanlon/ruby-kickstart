@@ -8,8 +8,5 @@
 
 # This time you will have to define the method, it's called: get_squares
 def get_squares(input_array)
-  # for each value:
-  # value **2 == current array item?
-  # if true, map value to new array
-  # return sorted array
+  input_array.select { |x| input_array.include? x**2 }.sort
 end
