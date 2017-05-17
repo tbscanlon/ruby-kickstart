@@ -3,3 +3,8 @@
 #
 # reverse_map(1, 2, 3) { |i| i * 2 }      # => [6, 4, 2]
 
+def reverse_map(*nums, &block)
+  r_array = []
+  nums.each { |num| r_array.push block.call num}
+  r_array.reverse
+end

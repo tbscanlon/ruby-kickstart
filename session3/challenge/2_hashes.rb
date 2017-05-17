@@ -8,3 +8,6 @@
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
 
+# Create new hash with empty arrays as values
+# pick out all of the odd numbers and put them as keys in hash
+# for each key in the hash, populate the array with all even numbers that are less than the key
