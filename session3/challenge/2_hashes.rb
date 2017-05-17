@@ -8,6 +8,19 @@
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
 
-# Create new hash with empty arrays as values
-# pick out all of the odd numbers and put them as keys in hash
-# for each key in the hash, populate the array with all even numbers that are less than the key
+def staircase(num)
+  r_hash = Hash.new([])
+
+  num.times do |n|
+    n += 1
+    r_hash[n] = [] if n.odd?
+  end
+
+  r_hash.each do |k, v|
+    a =[]
+    1.upto(k) { |x| a.push(x) if x.even? && x < k}
+    r_hash[k] = a
+  end
+
+  r_hash
+end
