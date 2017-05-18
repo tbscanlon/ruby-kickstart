@@ -17,3 +17,12 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+def match_maker(*args)
+  r_array = []
+  det = args.first
+  args.each_index do |index|
+    next if index.even?
+    r_array.push det ? !!args[index] != !!args[index + 1] : !!args[index] == !!args[index + 1]
+  end
+  r_array
+end
