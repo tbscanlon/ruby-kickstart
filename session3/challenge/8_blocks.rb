@@ -26,11 +26,15 @@
 
 
 class Person
-  attr_accessor :name
+  attr_accessor :name, :age, :quote
 
-  def initialize(&initializer)
-    @initializer = initializer
-    initializer.call self
+  def initialize(stats={}, &initializer)
+    @name = stats[:name]
+    @age = stats[:age]
+    @quote = stats[:quote]
+    # yield if block_given?
+    @initializer = (initializer || Proc.new {|person|})
+    reinit
   end
 
   def reinit
