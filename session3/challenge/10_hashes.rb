@@ -29,5 +29,36 @@
 # create it from scratch :)
 
 
-def pathify
+def pathify(path=Hash.new)
+  return path.map { |pth| "/#{pth}" } if path.is_a? Array # when input is just an array
+
+  r_array = []
+  path.each do |k, v|
+    parent = "/#{k}"
+    child = pathify(v)
+    child.each { |child| r_array << (parent + child) }
+  end
+  r_array
 end
+#   path.each do |k, v|
+#     r_array = []
+#     # if is a hash?
+#     if path.is_a? Hash
+#       # go DEEPER
+#       pathify(path[v])
+#       puts "going DEEPER"
+#     # if is an array?
+#     else
+#       r_array.pop("/#{v[0]}")
+#       puts "popping array contents to array"
+#       # pop contents to array
+#     end
+#     r_array.pop("/#{v}")
+#     "popping hash to array"
+#   end
+#   r_array
+# end
+
+# {"home" => {"tom" => ["Documents"]}}
+# hash = folder
+# array = file
