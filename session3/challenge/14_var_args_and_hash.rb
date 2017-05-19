@@ -21,11 +21,38 @@
 # problem_14 2,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => true
 # problem_14 3,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false
 
-def problem_14
+def problem_14(*arr) #h={:problem => :count_clumps})
+  # h = arr.pop[:problem] if arr.last.is_a? Hash
+  # h ||= :count_clumps
+  # h == :count_clumps ? count_clumps(arr) : same_ends(arr)
+  problem = arr.pop[:problem] if arr.last.is_a? Hash
+  problem ||= :count_clumps
+
+  return count_clumps(*arr) if problem == :count_clumps
+  return same_ends(*arr)    if problem == :same_ends
+
 end
 
-def same_ends
+def same_ends(n, *arr)
+  arr[0, n] == arr[-n, n]
 end
 
-def count_clumps
+def count_clumps(*arr)
+  number_of_clumps, previous, two_before = 0, nil, nil
+
+  arr.each do |num|
+    number_of_clumps += 1 if (previous == num) && (previous != two_before)
+    two_before = previous
+    previous = num
+  end
+  number_of_clumps
 end
+  # while marker <= arr.length
+  #   if arr[marker] == arr[marker + 1]
+  #     marker += 1 until arr[marker] != arr[marker + 1]
+  #     number_of_clumps += 1
+  #   else
+  #     marker += 1
+  #     next
+  #   end
+  # end

@@ -15,3 +15,14 @@
 # head = {:data => 6, :next => head}
 # print_list head                    # >> "6\n5\n4\n3\n2\n1\n"
 
+def print_list(list)
+  # r_string = []
+  # return r_string.join("\n") if list[:next] == nil
+  # r_string.push list[:data]
+  # print_list list[:next]
+
+  while list
+    puts list[:data]
+    list = list[:next]
+  end
+end

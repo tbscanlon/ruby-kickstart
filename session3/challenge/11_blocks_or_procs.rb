@@ -30,5 +30,7 @@
 # end
 
 
-def array_init
+def array_init(param=5, &block)
+  block = Proc.new { |x| (x * 100).to_s } if !block_given?
+  Array.new(param, &block)
 end

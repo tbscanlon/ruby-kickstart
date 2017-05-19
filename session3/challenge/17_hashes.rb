@@ -7,3 +7,11 @@
 #
 # print_list_in_reverse head   # >> "1\n2\n"
 
+def print_list_in_reverse(list)
+  r_array = []
+  while list
+    r_array.push list[:data]
+    list = list[:next]
+  end
+  puts r_array.reverse
+end
