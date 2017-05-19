@@ -60,7 +60,7 @@ class HTMLTag
     style[0] = "font-family:#{font};" if options[:font]
     style[1] = "color:#{color};" if options[:color]
 
-    s = "style='#{style.join("")}'"
+    "style='#{style.join("")}'"
   end
 
   def to_s

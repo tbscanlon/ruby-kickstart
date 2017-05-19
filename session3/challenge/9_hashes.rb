@@ -29,4 +29,19 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+  h = Hash.new { |thishash, key| thishash[key] = Array.new }
+
+  a.each { |element| h[element].push}
+  b.each { |element| h[element].push}
+
+  h.each do |k, v|
+    if a.include?(k) && b.include?(k)
+      h[k] = [true, true]
+    elsif a.include?(k)
+      h[k] = [true, nil]
+    else
+    h[k] = [nil, true]
+    end
+  end
+  return h, h.keys.map { |e| e if h[e] == [true, true] }.delete_if {|e| e == nil}
 end
